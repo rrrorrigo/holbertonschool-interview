@@ -5,21 +5,14 @@
 def canUnlockAll(boxes):
     """ method that determines if all the boxes can be opened"""
     keys = set(boxes[0])
-    pichu = 0
     check = set([])
     if len(keys) <= 0:
         return(False)
     for i in range(0, len(boxes)):
-        if len(boxes[i]) <= 0:
-            pichu += 1
-            continue
-        elif i in keys:
+        if i in keys:
             keys.update(boxes[i])
     for i in range(0, len(boxes)):
-        if len(boxes[i]) <= 0:
-            pichu += 1
-            continue
-        elif i in keys:
+        if i in keys:
             keys.update(boxes[i])
     for i in range(0, len(boxes)):
         check.add(i)
