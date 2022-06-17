@@ -1,37 +1,26 @@
 #include "palindrome.h"
 
 /**
- * is_palindrome - checks if a singly linked list is palindrome
- * @head: pointer to the singly linked list
+ * is_palindrome - checks if a given unsigned integer is a palindrome
  *
- * Return: 0 if it is not a palindrome, 1 if it is a palindrome
+ * @n: is the number to be checked
+ *
+ * Return: Your function must return 1 if n is a palindrome, and 0 otherwise
  */
-int is_palindrome(listint_t **head)
+int is_palindrome(unsigned long n)
 {
-	const listint_t *current;
-	unsigned int i, j;
-	int palindrome[4096];
+	unsigned long res = 0, rev = 0, num = 0;
 
-	if (*head == NULL)
+	num = n;
+	while (num != 0)
+	{
+		res = num % 10;
+		rev = rev * 10 + res;
+		num /= 10;
+	}
+
+	if (n == rev)
 		return (1);
 
-	current = *head;
-	i = 0;
-	while (current != NULL)
-	{
-		palindrome[i] = current->n;
-		current = current->next;
-		i++;
-	}
-
-	i--;
-	j = 0;
-	while (j <= i / 2)
-	{
-		if (palindrome[j] != palindrome[i - j])
-			return (0);
-		j++;
-	}
-	return (1);
-
+	return (0);
 }
